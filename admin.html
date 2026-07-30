@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>工单管理后台</title><link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="admin-shell"><div class="admin-wrap">
+    <header class="admin-header"><div><h1>工单管理后台</h1><p>查看和处理所有工单</p></div><a class="button secondary" href="index.html">工单提交页面</a></header>
+    <section class="stats-row"><article><span>全部工单</span><strong id="total">0</strong></article><article><span>待处理</span><strong id="pending">0</strong></article><article><span>处理中</span><strong id="processing">0</strong></article><article><span>已完成</span><strong id="completed">0</strong></article></section>
+    <section class="filter-panel"><div class="filter-title"><div><strong>筛选条件</strong><span>快速找到需要处理的工单</span></div><button class="text-button" id="clearFilters">清除筛选</button></div><div class="filter-grid"><label><span>搜索标题/描述</span><input id="search" placeholder="输入关键词搜索..."></label><label><span>状态</span><select id="statusFilter"><option value="all">全部状态</option><option value="pending">待处理</option><option value="processing">处理中</option><option value="completed">已完成</option><option value="closed">已关闭</option></select></label><label><span>优先级</span><select id="priorityFilter"><option value="all">全部优先级</option><option value="low">低</option><option value="medium">中</option><option value="high">高</option></select></label></div></section>
+    <div class="list-heading"><h2>工单列表</h2><span id="countLabel">共 0 个工单</span></div>
+    <div id="ticketList" class="ticket-list"><div class="empty-state">正在加载工单...</div></div>
+  </div></main>
+  <div class="notice" id="notice" hidden></div>
+  <script src="config.js"></script><script src="admin.js"></script>
+</body>
+</html>
