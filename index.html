@@ -9,9 +9,26 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="submit-page">
-  <main class="site-shell" id="formView">
+  <main class="site-shell center-shell" id="loginView">
+    <section class="login-card">
+      <div class="brand-mark login-mark">工</div>
+      <h1>工单提交系统</h1>
+      <p>请输入账号和密码后继续</p>
+      <form id="loginForm" class="login-form">
+        <label><span>账号</span><input id="loginUsername" autocomplete="username" placeholder="请输入账号" required></label>
+        <label><span>密码</span><input id="loginPassword" type="password" autocomplete="current-password" placeholder="请输入密码" required></label>
+        <p class="form-error" id="loginError" hidden></p>
+        <button class="button primary login-button" id="loginButton">登录</button>
+      </form>
+    </section>
+  </main>
+  <main class="site-shell" id="formView" hidden>
     <div class="form-wrap">
-      <header class="page-heading"><div class="brand-mark">工</div><div><h1>工单提交系统</h1><p>请填写以下信息提交工单，我们会尽快处理</p></div></header>
+      <header class="page-heading">
+        <div class="brand-mark">工</div>
+        <div class="heading-copy"><h1>工单提交系统</h1><p>请填写以下信息提交工单，我们会尽快处理</p></div>
+        <button class="button secondary logout-button" id="logoutButton" type="button">退出登录</button>
+      </header>
       <section class="panel">
         <div class="panel-header"><h2>工单信息</h2><p>请详细描述您遇到的问题或需求</p></div>
         <form id="ticketForm" class="ticket-form">
@@ -31,7 +48,7 @@
     </div>
   </main>
   <main class="site-shell center-shell" id="successView" hidden>
-    <section class="success-card"><div class="success-mark">✓</div><h1>提交成功！</h1><p>您的工单已成功提交，我们会尽快处理。</p><div class="button-row"><button class="button primary" id="againButton">继续提交</button></div></section>
+    <section class="success-card"><div class="success-mark">✓</div><h1>提交成功！</h1><p>您的工单已成功提交，我们会尽快处理。</p><div class="button-row"><button class="button primary" id="againButton">继续提交</button><button class="button secondary" id="successLogoutButton">退出登录</button></div></section>
   </main>
   <script src="config.js"></script><script src="app.js"></script>
 </body>

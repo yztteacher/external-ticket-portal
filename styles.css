@@ -23,6 +23,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .center-shell { display: grid; place-items: center; }
 .form-wrap { width: min(100%, 780px); margin: 0 auto; }
 .page-heading { display: flex; align-items: center; gap: 16px; margin: 0 0 24px; }
+.heading-copy { flex: 1; }
+.logout-button { margin-left: auto; white-space: nowrap; }
 .page-heading h1, .admin-header h1 { margin: 0; font-size: 30px; letter-spacing: -.03em; }
 .page-heading p, .admin-header p { margin: 7px 0 0; color: var(--muted); }
 .brand-mark {
@@ -70,6 +72,15 @@ input:focus, textarea:focus, select:focus { border-color: #60a5fa; box-shadow: 0
 .success-card p { margin: 0 0 26px; color: var(--muted); }
 .success-card .button-row { justify-content: center; }
 .success-mark { width: 68px; height: 68px; display: grid; place-items: center; margin: auto; border-radius: 50%; color: white; background: #22c55e; font-size: 34px; font-weight: bold; }
+.login-card {
+  width: min(100%, 430px); border: 1px solid rgba(214, 222, 234, .9); border-radius: 18px;
+  padding: 38px; background: var(--panel); box-shadow: 0 16px 45px rgba(28, 50, 90, .1);
+}
+.login-card h1 { margin: 18px 0 7px; text-align: center; font-size: 27px; }
+.login-card > p { margin: 0 0 25px; color: var(--muted); text-align: center; }
+.login-mark { margin: 0 auto; }
+.login-form { display: grid; gap: 18px; }
+.login-button { width: 100%; margin-top: 2px; }
 
 .admin-shell { min-height: 100vh; padding: 34px 22px 70px; background: #f6f8fc; }
 .admin-wrap { width: min(100%, 1180px); margin: 0 auto; }
@@ -127,6 +138,9 @@ input:focus, textarea:focus, select:focus { border-color: #60a5fa; box-shadow: 0
 @media (max-width: 760px) {
   .site-shell { padding: 26px 14px 48px; }
   .page-heading h1, .admin-header h1 { font-size: 25px; }
+  .page-heading { align-items: flex-start; flex-wrap: wrap; }
+  .heading-copy { min-width: calc(100% - 68px); }
+  .logout-button { margin-left: 62px; }
   .brand-mark { width: 46px; height: 46px; border-radius: 13px; }
   .panel-header, .ticket-form { padding-left: 19px; padding-right: 19px; }
   .field-grid, .filter-grid, .edit-grid { grid-template-columns: 1fr; }
@@ -140,4 +154,5 @@ input:focus, textarea:focus, select:focus { border-color: #60a5fa; box-shadow: 0
   .ticket-description, .contact-row { margin-left: 0; }
   .track-form { grid-template-columns: 1fr; }
   .success-card { padding: 34px 22px; }
+  .login-card { padding: 32px 22px; }
 }
