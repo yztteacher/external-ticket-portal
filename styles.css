@@ -64,6 +64,8 @@ input:focus, textarea:focus, select:focus { border-color: #60a5fa; box-shadow: 0
 .button.primary { color: white; background: var(--blue); }
 .button.primary:hover { background: var(--blue-dark); }
 .button.secondary { color: #334155; background: white; border-color: #d5dce7; }
+.button.danger { color: white; background: #dc2626; border-color: #dc2626; }
+.button.danger:hover { background: #b91c1c; }
 .button.quiet { color: var(--muted); background: transparent; }
 .button:disabled { opacity: .6; cursor: wait; }
 .form-error { margin: -8px 0 0; border-radius: 8px; padding: 10px 12px; color: #b91c1c; background: #fef2f2; font-size: 14px; }
@@ -107,6 +109,11 @@ input:focus, textarea:focus, select:focus { border-color: #60a5fa; box-shadow: 0
 .list-heading { display: flex; align-items: end; justify-content: space-between; margin: 26px 2px 12px; }
 .list-heading h2 { margin: 0; font-size: 19px; }
 .list-heading span { color: var(--muted); font-size: 13px; }
+.bulk-bar { display: flex; align-items: center; gap: 14px; margin: 0 2px 12px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 11px; background: white; }
+.bulk-select { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.bulk-select input, .ticket-checkbox { width: 17px; height: 17px; padding: 0; accent-color: var(--blue); cursor: pointer; }
+.bulk-bar > span { margin-left: auto; color: var(--muted); font-size: 13px; }
+.bulk-bar .button { min-height: 36px; padding: 7px 13px; }
 .ticket-list { display: grid; gap: 12px; }
 .ticket-card { border-radius: 13px; padding: 19px 20px; box-shadow: 0 7px 22px rgba(28, 50, 90, .05); }
 .ticket-summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
@@ -151,6 +158,11 @@ input:focus, textarea:focus, select:focus { border-color: #60a5fa; box-shadow: 0
   .edit-grid .wide { grid-column: auto; }
   .admin-shell { padding: 24px 13px 50px; }
   .admin-header, .ticket-summary { align-items: flex-start; flex-direction: column; }
+  .ticket-summary { position: relative; padding-left: 27px; }
+  .ticket-checkbox { position: absolute; top: 3px; left: 0; }
+  .bulk-bar { flex-wrap: wrap; }
+  .bulk-bar > span { margin-left: 0; }
+  .bulk-bar .button { margin-left: auto; }
   .admin-actions { width: 100%; flex-wrap: wrap; }
   .stats-row { grid-template-columns: 1fr 1fr; }
   .ticket-controls { width: 100%; }
