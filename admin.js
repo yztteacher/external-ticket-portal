@@ -3,7 +3,8 @@ const labels={status:{pending:"待处理",processing:"处理中",completed:"已�
 let allTickets=[];
 async function sendFeishu(ticket, textLine) {
   if (!window.APP_CONFIG.adminWebhook) return;
-  const text=`【工单更新】\n工单ID: ${ticket.id}\n工单标题: ${ticket.info.title}\n问题描述: ${ticket.info.description}\n提交人姓名: ${ticket.name||"-"}\n${textLine}`;
+  const adminUrl = "https://yztteacher.github.io/external-ticket-portal/admin.html";
+  const text=`【工单更新】\n工单ID: ${ticket.id}\n工单标题: ${ticket.info.title}\n问题描述: ${ticket.info.description}\n提交人姓名: ${ticket.name||"-"}\n${textLine}\n管理后台: ${adminUrl}`;
   try { await fetch(window.APP_CONFIG.adminWebhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({msg_type:"text",content:{text}})}); } catch {}
 }
 const esc=(value)=>String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
