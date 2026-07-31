@@ -42,6 +42,7 @@ document.querySelector("#loginForm").addEventListener("submit", async (event) =>
     loginError.textContent = "账号或密码错误";
     loginError.hidden = false;
   } else {
+    db.auth.setRememberSession?.(document.querySelector("#rememberPassword").checked);
     const { error } = await db.auth.signInWithPassword({email: AUTH_EMAIL, password});
     if (error) {
       loginError.textContent = "账号或密码错误";
