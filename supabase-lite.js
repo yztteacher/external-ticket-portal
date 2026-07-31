@@ -3,25 +3,33 @@
 
   function createClient(projectUrl, anonKey) {
     const baseUrl = projectUrl.replace(/\/$/, "");
+    let rememberSession = true;
 
     function saveSession(session) {
       if (!session) {
         localStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem(SESSION_KEY);
         return null;
       }
       const normalized = {
         ...session,
         expires_at: session.expires_at || Math.floor(Date.now() / 1000) + (session.expires_in || 3600),
       };
-      localStorage.setItem(SESSION_KEY, JSON.stringify(normalized));
+      const targetStorage = rememberSession ? localStorage : sessionStorage;
+      const otherStorage = rememberSession ? sessionStorage : localStorage;
+      otherStorage.removeItem(SESSION_KEY);
+      targetStorage.setItem(SESSION_KEY, JSON.stringify(normalized));
       return normalized;
     }
 
     function storedSession() {
       try {
-        return JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+        const persistent = localStorage.getItem(SESSION_KEY);
+        rememberSession = Boolean(persistent);
+        return JSON.parse(persistent || sessionStorage.getItem(SESSION_KEY) || "null");
       } catch {
         localStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem(SESSION_KEY);
         return null;
       }
     }
@@ -39,6 +47,10 @@
     }
 
     const auth = {
+      setRememberSession(value) {
+        rememberSession = Boolean(value);
+      },
+
       async getSession() {
         let session = storedSession();
         if (!session) return { data: { session: null }, error: null };
